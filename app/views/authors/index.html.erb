@@ -1,0 +1,17 @@
+<div class="container mt-3">
+  <div class="row">
+  	<%= link_to 'New', new_author_path, class: 'btn btn-success'%> 
+  	<table class="table datatables">
+  		<thead>
+  			<th>First name</th>
+  			<th>Last Name</th>
+  			<th>Date of birth</th>
+  			<th>Books</th>
+  			<th>Action</th>
+  		</thead>
+  		<tbody>
+  			<%= render partial:'author_data', collection: @authors, as: :author %>
+  		</tbody>
+  	</table>
+  </div>
+</div>

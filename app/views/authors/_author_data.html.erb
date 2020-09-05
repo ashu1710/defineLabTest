@@ -1,0 +1,9 @@
+<tr>
+	<td><%= author.first_name %></td>
+	<td><%= author.last_name %></td>
+	<td><%= author.date_of_birth %></td>
+	<td><%= author.books.pluck(:title).join(", ") %></td>
+	<td><%= link_to '<i class="fa fa-pencil btn btn-warning" aria-hidden="true"></i>'.html_safe, edit_author_path(author) %>
+		<%= link_to '<i class="fa fa-trash btn btn-danger" aria-hidden="true"></i>'.html_safe, author_path(author), method: :delete %>
+	</td>
+</tr>

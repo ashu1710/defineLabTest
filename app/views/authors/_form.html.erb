@@ -1,0 +1,40 @@
+<div class="container mt-3">
+  <div class="row"> 
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <%= form_for(@author, html: { class: "form-group" }) do |f| %>
+        <div class="field">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :date_of_birth %>
+          <%= f.text_field :date_of_birth, class: 'form-control set-date-picker', readonly: true %>
+        </div>
+
+        <% if @books.present? %>
+          <div class="field mt-2">
+            <p>List of Books</p>
+            <% @books.each do |book| %>
+              <%= check_box_tag "author[book_ids][]", book.id , !@author.new_record? && @author.book_ids.include?(book.id) , { id: book.slug } %>
+              <label for='<%= book.slug %>'>
+                  <%= book.title  %>
+              </label>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div class="field mt-2">
+          <%= f.submit "Submit", class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
